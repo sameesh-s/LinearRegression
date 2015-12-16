@@ -3,6 +3,8 @@ import java.util.*;
 
 public class  Read{
 
+
+
 public static void main(String[] args) throws IOException {
 
 
@@ -10,6 +12,7 @@ Scanner scanner = new Scanner(new File("dataset"));
 int [] X = new int [100];
 int [] Y =new int [100];
 int i = 0,count=0;
+double slope,inter;
 double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,temp1;
 	while(scanner.hasNextInt()){
 	if(i%2==0)
@@ -59,5 +62,10 @@ double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,t
 	temp1 =Math.sqrt(temp1);
 	r/=temp1;
 	System.out.println("regression coefficient :"+r);
+//calculating slope,inter
+	slope=r * (SYdev / SXdev);
+	inter=Ymean-(slope*Xmean);
+	System.out.println("slope :"+slope+" intersection "+inter);
+
 	}
 }
