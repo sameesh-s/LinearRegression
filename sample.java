@@ -68,8 +68,9 @@ class LinearRegression {
 	inter=Ymean-(slope*Xmean);
 	System.out.println("slope :"+slope+" intersection "+inter);*/
 		}
-	public String returnPrice(double x)
-		{double price;
+	public String returnPrice(String s)
+		{double price,x;
+		x = Double.parseDouble(s);
 		price = (slope * x ) + A;
 		return String.valueOf(price);
 		}
@@ -114,7 +115,6 @@ public class sample {
     
 private void showButtonDemo(LinearRegression lr){
 	headerLabel.setText("Prediction"); 
-      //resources folder should be inside SWING folder.
         JTextField userText = new JTextField(6);
         JTextField userText2 = new JTextField(6);
         JButton cancelButton = new JButton("Predict Price");
@@ -122,7 +122,7 @@ private void showButtonDemo(LinearRegression lr){
 
         cancelButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-		userText2.setText(lr.returnPrice(15));
+		userText2.setText(lr.returnPrice(userText.getText()));
         	}
                 });
       controlPanel.add(userText); 
