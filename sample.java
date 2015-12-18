@@ -34,7 +34,7 @@ class LinearRegression {
 		i++;
 		}
 	System.out.println("Xsum :"+Xsum+" Ysum :"+Ysum+"XYsum :"+XYsum+" X2SUm : "+X2sum + "Cont "+count);
-	slope= ( (count * XYsum) - ( Xsum - Ysum ) ) / ( ( count * X2sum ) -Math.pow(Xsum,2) ) ;
+	slope= ( (count * XYsum) - ( Xsum * Ysum ) ) / ( ( count * X2sum ) - Math.pow(Xsum,2) ) ;
 	A= ( Ysum - (slope * Xsum ) ) / count;
 	System.out.println(" slope "+ slope + "Intercept "+A);
 
@@ -116,6 +116,7 @@ public class sample {
 private void showButtonDemo(LinearRegression lr){
 	headerLabel.setText("Prediction"); 
         JTextField userText = new JTextField(6);
+	userText.setText("sqfeet");
         JTextField userText2 = new JTextField(6);
         JButton cancelButton = new JButton("Predict Price");
         cancelButton.setHorizontalTextPosition(SwingConstants.LEFT);   
