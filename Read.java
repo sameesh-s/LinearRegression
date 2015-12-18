@@ -12,7 +12,7 @@ Scanner scanner = new Scanner(new File("dataset"));
 int [] X = new int [100];
 int [] Y =new int [100];
 int i = 0,count=0;
-double slope,inter;
+double slope,A;
 double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,temp1;
 	while(scanner.hasNextInt()){
 	if(i%2==0)
@@ -26,7 +26,7 @@ double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,t
 		{
 		Y[count] = scanner.nextInt();
 		Ysum=Ysum+Y[count];
-		Y2sum=Y2sum+Math.pow((X[count]),2);
+		//Y2sum=Y2sum+Math.pow((X[count]),2);
 		XYsum=XYsum+(X[count]*Y[count]);
 		//System.out.println(Y[count]+":"+count);
 		count++;
@@ -36,8 +36,12 @@ double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,t
 	Xmean=Xsum/count;
 	Ymean=Ysum/count;
 	
-	System.out.println(Xmean+":"+Ymean);
-
+	//System.out.println(Xmean+":"+Ymean);
+	System.out.println("Xsum :"+Xsum+" Ysum :"+Ysum+"XYsum :"+XYsum+" X2SUm : "+X2sum + "Cont "+count);
+	slope= ( (count * XYsum) - ( Xsum - Ysum ) ) / ( ( count * X2sum ) -Math.pow(Xsum,2) ) ;
+	A= ( Ysum - (slope * Xsum ) ) / count;
+	System.out.println(" slope "+ slope + "Intercept "+A);
+/*
 //Standerd deviation
 	i=0;
 	while(i<count)
@@ -64,8 +68,8 @@ double Xmean=0,Ymean=0,Xsum=0,Ysum=0,X2sum=0,Y2sum=0,SYdev=0,SXdev=0,XYsum=0,r,t
 	System.out.println("regression coefficient :"+r);
 //calculating slope,inter
 	slope=r * (SYdev / SXdev);
-	inter=Ymean-(slope*Xmean);
-	System.out.println("slope :"+slope+" intersection "+inter);
+	inter=Ymean-(slope*Xmean);*/
+	//System.out.println("slope :"+slope+" intersection "+inter);
 
 	}
 }
