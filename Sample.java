@@ -3,8 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.util.*;
-
-
 class LinearRegression {
 	double slope,A;
 	LinearRegression()  throws IOException
@@ -20,53 +18,18 @@ class LinearRegression {
 			X[count] = scanner.nextInt();
 			Xsum=Xsum+X[count];
 			X2sum=X2sum+Math.pow((X[count]),2);  
-			//System.out.println(X[count]+":"+count);
 			}
 		else
 			{
 			Y[count] = scanner.nextInt();
 			Ysum=Ysum+Y[count];
-			//Y2sum=Y2sum+Math.pow((X[count]),2);
 			XYsum=XYsum+(X[count]*Y[count]);
-			//System.out.println(Y[count]+":"+count);
 			count++;
 			}
 		i++;
 		}
-	System.out.println("Xsum :"+Xsum+" Ysum :"+Ysum+"XYsum :"+XYsum+" X2SUm : "+X2sum + "Cont "+count);
 	slope= ( (count * XYsum) - ( Xsum * Ysum ) ) / ( ( count * X2sum ) - Math.pow(Xsum,2) ) ;
 	A= ( Ysum - (slope * Xsum ) ) / count;
-	System.out.println(" slope "+ slope + "Intercept "+A);
-
-/*
-	//Standerd deviation
-		i=0;
-		while(i<count)
-			{ 
-			SXdev=SXdev+Math.pow((X[i]-Xmean),2);  
-			SYdev=SYdev+Math.pow((Y[i]-Ymean),2);
-			i++;
-			}
-		SXdev/=count; 	//SXdev=SXdev/count;  
-		SXdev=Math.sqrt(SXdev); 
-		SYdev/=count;  
-		SYdev=Math.sqrt(SYdev); 
-		System.out.println(SXdev+":"+SYdev);
-	//regression coefficient
-	//System.out.println(Math.pow(Xsum,2));
-	//System.out.println(( count * X2sum));
-	r =(count * XYsum) - (Xsum * Ysum );
-	temp1 =( count * X2sum ) - Math.pow(Xsum,2) ;
-	//System.out.println("regression coefficient :"+temp1);
-	temp1 *=( count * Y2sum ) - Math.pow(Ysum,2);
-	//System.out.println("regression coefficient :"+temp1);
-	temp1 =Math.sqrt(temp1);
-	r/=temp1;
-	System.out.println("regression coefficient :"+r);
-	//calculating slope,inter
-	slope=r * (SYdev / SXdev);
-	inter=Ymean-(slope*Xmean);
-	System.out.println("slope :"+slope+" intersection "+inter);*/
 		}
 	public String returnPrice(String s)
 		{double price,x;
@@ -76,21 +39,19 @@ class LinearRegression {
 		}
 	}
 
-
- 
-public class sample {
+public class Sample {
 	private JFrame mainFrame;
 	private JLabel headerLabel;
 	private JLabel statusLabel;
 	private JPanel controlPanel;
 
-	public sample(){
+	public Sample(){
 		prepareGUI();
 		}
 	public static void main(String[] args)  throws IOException{
-		sample  sample = new sample(); 
+		Sample  Sample = new Sample(); 
 		LinearRegression lr= new LinearRegression();     
-        	sample.showButtonDemo(lr);
+        	Sample.showButtonDemo(lr);
 		}
 	private void prepareGUI(){
 		mainFrame = new JFrame("Linear Regression");
